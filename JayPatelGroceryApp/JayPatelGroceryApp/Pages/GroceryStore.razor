@@ -1,0 +1,40 @@
+﻿@page "/groceryStore"
+<PageTitle>Welcome to JP's Grocery Store</PageTitle>
+<h3>Add/Remove Food Item to an isle</h3>
+
+<div hidden="@hideOnPage">
+    <ul>
+       @foreach (var isle in groceryIsles)
+       {
+        <li>@isle.isleName</li>    
+       }
+    </ul>
+    <div class="row">
+        <div class="col">
+            <input type="text" class="form-control" placeholder="Add Grocery Isle" @bind="newIsle" >
+        </div>
+        <div class="col">
+            <button class="btn btn-success" @onclick="AddIsle">Add Isle</button>
+        </div>
+    </div>
+</div>
+
+
+@code {
+
+    [Parameter]
+    public string hideOnPage { get; set; }
+
+    private List<GroceryIsle> groceryIsles = new();
+    private string? newIsle;
+
+   
+    private void AddIsle()
+    {
+        if (!string.IsNullOrWhiteSpace(newIsle))
+        {
+            groceryIsles.Add(new GroceryIsle { isleName = newIsle });
+            newIsle = string.Empty;
+        }
+    }
+}
