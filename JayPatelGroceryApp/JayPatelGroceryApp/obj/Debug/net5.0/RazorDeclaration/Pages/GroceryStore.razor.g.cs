@@ -91,28 +91,34 @@ using JayPatelGroceryApp.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 23 "C:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelGroceryApp\JayPatelGroceryApp\Pages\GroceryStore.razor"
+#line 50 "C:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelGroceryApp\JayPatelGroceryApp\Pages\GroceryStore.razor"
        
 
     [Parameter]
     public string hideOnPage { get; set; }
 
-    private List<GroceryIsle> groceryIsles = new();
-    private string? newIsle;
+    private List<GroceryIsle> groceryIsles;
+    private string? newFoodItm;
 
-   
-    private void AddIsle()
+
+    protected override void OnInitialized()
     {
-        if (!string.IsNullOrWhiteSpace(newIsle))
+        groceryIsles = GroceryService.GetGroceryIsles();
+    }
+
+    private void addNewFoodItem()
+    {
+        if (!string.IsNullOrWhiteSpace(newFoodItm))
         {
-            groceryIsles.Add(new GroceryIsle { isleName = newIsle });
-            newIsle = string.Empty;
+           // groceryIsles.Add(new GroceryIsle { isleName = newIsle });
+            newFoodItm = string.Empty;
         }
     }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IGroceryIsleService GroceryService { get; set; }
     }
 }
 #pragma warning restore 1591

@@ -6,5 +6,6 @@
             public string foodName { get; set; }
             public string foodDescription { get; set; }
             public string foodType { get; set; }
+
     }
 }

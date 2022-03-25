@@ -1,22 +1,49 @@
 ﻿@page "/groceryStore"
 <PageTitle>Welcome to JP's Grocery Store</PageTitle>
-<h3>Add/Remove Food Item to an isle</h3>
-
+@inject IGroceryIsleService GroceryService;
 <div hidden="@hideOnPage">
-    <ul>
-       @foreach (var isle in groceryIsles)
-       {
-        <li>@isle.isleName</li>    
-       }
-    </ul>
-    <div class="row">
-        <div class="col">
-            <input type="text" class="form-control" placeholder="Add Grocery Isle" @bind="newIsle" >
+    <h3>Add Food Item to an isle</h3>
+    <br />
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+          <input type="text" class="form-control" placeholder="Add Food Item to Isle" @bind="newFoodItm" >
         </div>
-        <div class="col">
-            <button class="btn btn-success" @onclick="AddIsle">Add Isle</button>
+        <div class="form-group col-md-4">
+           <input type="text" class="form-control" placeholder="Add Isle Number" >
+        </div>
+        <div class="form-group col-md-2">
+         <button class="btn btn-success" @onclick="addNewFoodItem">Add Food Item</button>
         </div>
     </div>
+    
+    
+    <br />
+
+    <ul class="list-group">
+        @foreach (var isle in groceryIsles)
+        {
+            <li class="list-group-item d-flex justify-content-between align-items-center active">
+                @isle.isleName  
+                <span class="badge badge-primary badge-light" title="Isle Number">Isle#: @isle.isleNum</span>
+            </li>
+            <ul class="list-group">
+                @foreach (var foodItem in @isle.foodlist)
+                {
+                    <li class="list-group-item d-flex justify-content-between align-items-center ">
+                        @foodItem.foodName
+
+                         <span class="badge badge-primary badge-pill" title="Quantity">
+                            <button class="btn-remove-native-style">&minus;</button>
+                             <span>@foodItem.foodQuantity</span>
+                             <button class="btn-remove-native-style">&plus;</button>
+                         </span>
+                    </li>
+                }
+            </ul>
+        }
+    </ul>
+    
 </div>
 
 
@@ -25,16 +52,21 @@
     [Parameter]
     public string hideOnPage { get; set; }
 
-    private List<GroceryIsle> groceryIsles = new();
-    private string? newIsle;
+    private List<GroceryIsle> groceryIsles;
+    private string? newFoodItm;
 
-   
-    private void AddIsle()
+
+    protected override void OnInitialized()
     {
-        if (!string.IsNullOrWhiteSpace(newIsle))
+        groceryIsles = GroceryService.GetGroceryIsles();
+    }
+
+    private void addNewFoodItem()
+    {
+        if (!string.IsNullOrWhiteSpace(newFoodItm))
         {
-            groceryIsles.Add(new GroceryIsle { isleName = newIsle });
-            newIsle = string.Empty;
+           // groceryIsles.Add(new GroceryIsle { isleName = newIsle });
+            newFoodItm = string.Empty;
         }
     }
 }
