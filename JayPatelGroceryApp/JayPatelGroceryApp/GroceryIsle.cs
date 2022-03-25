@@ -10,6 +10,8 @@ namespace JayPatelGroceryApp
         //public FoodItem FoodItem { get;set; }
         public string isleName { get; set; }
         public int isleNum { get; set; }
+
+        public Guid isleId { get; set; }
         public List<FoodItem> foodlist{ get; set; }
 
 

@@ -10,10 +10,15 @@
           <input type="text" class="form-control" placeholder="Add Food Item to Isle" @bind="newFoodItm" >
         </div>
         <div class="form-group col-md-4">
-           <input type="text" class="form-control" placeholder="Add Isle Number" >
+           <select id="inputState" class="form-control" @bind="@selectedIsle">
+                @foreach (var isle in groceryIsles)
+                {
+                   <option value=@isle.isleId>@isle.isleNum</option>
+                }
+          </select>
         </div>
         <div class="form-group col-md-2">
-         <button class="btn btn-success" @onclick="addNewFoodItem">Add Food Item</button>
+         <button class="btn btn-success" @onclick="addFoodItemToIsle">Add Food Item</button>
         </div>
     </div>
     
@@ -34,9 +39,9 @@
                         @foodItem.foodName
 
                          <span class="badge badge-primary badge-pill" title="Quantity">
-                            <button class="btn-remove-native-style">&minus;</button>
+                            <button class="btn-remove-native-style" @onclick="()=>decrementFoodCount(isle.isleId,foodItem.foodId)">&minus;</button>
                              <span>@foodItem.foodQuantity</span>
-                             <button class="btn-remove-native-style">&plus;</button>
+                             <button class="btn-remove-native-style" @onclick="()=>incrementFoodCount(isle.isleId,foodItem.foodId)">&plus;</button>
                          </span>
                     </li>
                 }
@@ -54,6 +59,7 @@
 
     private List<GroceryIsle> groceryIsles;
     private string? newFoodItm;
+    private Guid selectedIsle;
 
 
     protected override void OnInitialized()
@@ -61,12 +67,23 @@
         groceryIsles = GroceryService.GetGroceryIsles();
     }
 
-    private void addNewFoodItem()
+    private void decrementFoodCount(Guid iselID, Guid foodID)
     {
-        if (!string.IsNullOrWhiteSpace(newFoodItm))
+        GroceryService.UpdateFoodQuantitye(iselID, foodID, false);
+    }
+
+    private void incrementFoodCount(Guid iselID, Guid foodID)
+    {
+        GroceryService.UpdateFoodQuantitye(iselID, foodID, true);
+    }
+
+    private void addFoodItemToIsle()
+    {
+        if (!string.IsNullOrWhiteSpace(newFoodItm) && selectedIsle != Guid.Empty)
         {
-           // groceryIsles.Add(new GroceryIsle { isleName = newIsle });
-            newFoodItm = string.Empty;
+            GroceryService.AddFoodItemToIsle(selectedIsle, newFoodItm);
+            newFoodItm = "";
+            selectedIsle = Guid.Empty;
         }
     }
 }

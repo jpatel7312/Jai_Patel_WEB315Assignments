@@ -91,7 +91,7 @@ using JayPatelGroceryApp.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 50 "C:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelGroceryApp\JayPatelGroceryApp\Pages\GroceryStore.razor"
+#line 55 "C:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelGroceryApp\JayPatelGroceryApp\Pages\GroceryStore.razor"
        
 
     [Parameter]
@@ -99,6 +99,7 @@ using JayPatelGroceryApp.Shared;
 
     private List<GroceryIsle> groceryIsles;
     private string? newFoodItm;
+    private Guid selectedIsle;
 
 
     protected override void OnInitialized()
@@ -106,12 +107,23 @@ using JayPatelGroceryApp.Shared;
         groceryIsles = GroceryService.GetGroceryIsles();
     }
 
-    private void addNewFoodItem()
+    private void decrementFoodCount(Guid iselID, Guid foodID)
     {
-        if (!string.IsNullOrWhiteSpace(newFoodItm))
+        GroceryService.UpdateFoodQuantitye(iselID, foodID, false);
+    }
+
+    private void incrementFoodCount(Guid iselID, Guid foodID)
+    {
+        GroceryService.UpdateFoodQuantitye(iselID, foodID, true);
+    }
+
+    private void addFoodItemToIsle()
+    {
+        if (!string.IsNullOrWhiteSpace(newFoodItm) && selectedIsle != Guid.Empty)
         {
-           // groceryIsles.Add(new GroceryIsle { isleName = newIsle });
-            newFoodItm = string.Empty;
+            GroceryService.AddFoodItemToIsle(selectedIsle, newFoodItm);
+            newFoodItm = "";
+            selectedIsle = Guid.Empty;
         }
     }
 
