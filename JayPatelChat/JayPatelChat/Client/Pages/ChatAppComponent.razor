@@ -1,0 +1,100 @@
+﻿@page "/chatapp"
+@using Microsoft.AspNetCore.SignalR.Client
+@using JayPatelChat.Shared
+@inject NavigationManager NavigationManager
+@implements IAsyncDisposable
+
+<div class="form-group">
+    <label for="username">Name:</label>
+    <input type="text" class="form-control" id="username" placeholder="Enter Name" @bind="userInput">
+</div>
+
+<hr>
+
+
+<div class="messaging">
+	<div class="mesgs">
+	  <div class="msg_history">
+          @foreach (var message in messages){
+              <div class="margin-bottom-15 @(message.isCurrentUser?"outgoing_msg":"incoming_msg")">
+		          <div>
+			        <div class="@(message.isCurrentUser?"sent_msg":"received_withd_msg")">
+                         <strong class="messageInfo username">@(message.isCurrentUser?"You":@message.Username)</strong>
+			          <p>@message.Message</p>
+                      <span class="messageInfo">@message.timeSent.ToString("MMM dd | hh:mm tt")</span>
+			        </div>
+		          </div>
+		       </div>
+          }
+	  </div>
+	  <div class="type_msg">
+        <span class="messageInfo" hidden="@whoIsTyping == @userInput">User is tupsodifj</span>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" id="usermessage" placeholder="Type Message...." @bind="messageInput" @onfocus="SendWhoIsTyping" @onblur="RemoveWhoIsTyping" />
+             <div class="input-group-append"  @onclick="Send" disabled="@(!IsConnected)" >
+                <button class="btn btn-success" >Send @whoIsTyping</button>
+            </div>
+        </div>
+	  </div>
+	</div>
+</div>
+
+@code {
+    private HubConnection hubConnection;
+    private List<UserMessage> messages = new();
+    private string userInput;
+    private string messageInput;
+    private string whoIsTyping = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        hubConnection = new HubConnectionBuilder() 
+            .WithUrl(NavigationManager.ToAbsoluteUri("/chathub"))
+            .Build();
+
+        hubConnection.On<string, string>("ReceiveMessage", (user, message) =>
+        {
+            whoIsTyping = user;
+            messages.Add(new UserMessage{Username = user,Message = message, isCurrentUser= user==userInput,timeSent = DateTime.Now});
+            StateHasChanged();
+        });
+
+        hubConnection.On<string>("RecieveWhoIsTyping", (user) =>
+        {
+            whoIsTyping = user;
+            StateHasChanged();
+        });
+
+
+        await hubConnection.StartAsync();
+    }
+
+    async Task Send(){
+        if(!String.IsNullOrEmpty(userInput) && !String.IsNullOrEmpty(messageInput)){
+            await hubConnection.SendAsync("SendMessage", userInput, messageInput);
+            messageInput = "";
+            RemoveWhoIsTyping();
+        }
+    }
+
+    async Task SendWhoIsTyping(){
+        await hubConnection.SendAsync("SendWhoIsTyping",userInput);
+    }
+    
+    async Task RemoveWhoIsTyping(){
+        await hubConnection.SendAsync("SendWhoIsTyping","");
+    }
+        
+    
+
+    public bool IsConnected =>
+        hubConnection.State == HubConnectionState.Connected;
+
+    public async ValueTask DisposeAsync()
+    {
+        if (hubConnection is not null)
+        {
+            await hubConnection.DisposeAsync();
+        }
+    }
+}
