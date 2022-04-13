@@ -111,7 +111,7 @@ using JayPatelChat.Shared;
     private List<UserMessage> messages = new();
     private string userInput;
     private string messageInput;
-    private string whoIsTyping = "";
+    private string whoIsTyping;
 
     protected override async Task OnInitializedAsync()
     {

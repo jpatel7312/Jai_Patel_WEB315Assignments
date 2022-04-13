@@ -204,14 +204,14 @@
       "netstandard.dll": "sha256-qE0Q70OyVlHYY\/Y3nwMjfh+zissea9uhfvWMvPWfI7w=",
       "System.Private.CoreLib.dll": "sha256-pdkcl2+OojCfrhxX5eFmKI30wAmhL6s+sCLp7s175k0=",
       "JayPatelChat.Shared.dll": "sha256-YHbgbFdXsMguLP9m7mqIMfyQQHnPu8H92hWiZ0Ykv5M=",
-      "JayPatelChat.Client.dll": "sha256-0ZgjSLJC64i2X5CP69U7oTN80YVYcQE2lt8LOYklZso="
+      "JayPatelChat.Client.dll": "sha256-hxr3J6ZAVf33fSgo3w+DkLg0oRz\/i8RJd0J7j6ObVD4="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
       "JayPatelChat.Shared.pdb": "sha256-cml+T+r4XSRwskj1qIbDYLsSikOKvdV9dpa6j\/g6p1c=",
-      "JayPatelChat.Client.pdb": "sha256-HZdFn9zyFYcqVk1QugZvJt92xEJpPX4ri9CPIcYfvT0="
+      "JayPatelChat.Client.pdb": "sha256-6QZd3iiyWDyDMAPs64yq7ZwsMMcpYgnZxEAY99JRpAs="
     },
     "runtime": {
       "dotnet.timezones.blat": "sha256-ootDKSA6cNAbgJLmPhrHsPVvVqkGEYdRZxucC22LWjw=",

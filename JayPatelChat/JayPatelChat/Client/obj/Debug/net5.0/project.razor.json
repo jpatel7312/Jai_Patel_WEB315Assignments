@@ -41,6 +41,39 @@
         }
       },
       {
+        "HashCode": -2029875150,
+        "Kind": "Components.Component",
+        "Name": "JayPatelChat.Client.Pages.Counter",
+        "AssemblyName": "JayPatelChat.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Counter"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "JayPatelChat.Client.Pages.Counter"
+        }
+      },
+      {
+        "HashCode": -27243106,
+        "Kind": "Components.Component",
+        "Name": "JayPatelChat.Client.Pages.Counter",
+        "AssemblyName": "JayPatelChat.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "JayPatelChat.Client.Pages.Counter"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "JayPatelChat.Client.Pages.Counter",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
         "HashCode": -160206203,
         "Kind": "Components.Component",
         "Name": "JayPatelChat.Client.Pages.FetchData",
@@ -103,72 +136,6 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "JayPatelChat.Client.Pages.Index",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -2029875150,
-        "Kind": "Components.Component",
-        "Name": "JayPatelChat.Client.Pages.Counter",
-        "AssemblyName": "JayPatelChat.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Counter"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "JayPatelChat.Client.Pages.Counter"
-        }
-      },
-      {
-        "HashCode": -27243106,
-        "Kind": "Components.Component",
-        "Name": "JayPatelChat.Client.Pages.Counter",
-        "AssemblyName": "JayPatelChat.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "JayPatelChat.Client.Pages.Counter"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "JayPatelChat.Client.Pages.Counter",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -1227548387,
-        "Kind": "Components.Component",
-        "Name": "JayPatelChat.Client.Pages.ChatAppComponent",
-        "AssemblyName": "JayPatelChat.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "ChatAppComponent"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "JayPatelChat.Client.Pages.ChatAppComponent"
-        }
-      },
-      {
-        "HashCode": -1863975584,
-        "Kind": "Components.Component",
-        "Name": "JayPatelChat.Client.Pages.ChatAppComponent",
-        "AssemblyName": "JayPatelChat.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "JayPatelChat.Client.Pages.ChatAppComponent"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "JayPatelChat.Client.Pages.ChatAppComponent",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },

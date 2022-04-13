@@ -20,7 +20,7 @@
 		          <div>
 			        <div class="@(message.isCurrentUser?"sent_msg":"received_withd_msg")">
                          <strong class="messageInfo username">@(message.isCurrentUser?"You":@message.Username)</strong>
-			          <p>@message.Message</p>
+			          <p class="messagePara">@message.Message</p>
                       <span class="messageInfo">@message.timeSent.ToString("MMM dd | hh:mm tt")</span>
 			        </div>
 		          </div>
@@ -28,11 +28,11 @@
           }
 	  </div>
 	  <div class="type_msg">
-        <span class="messageInfo" hidden="@whoIsTyping == @userInput">User is tupsodifj</span>
+        <span class="messageInfo" hidden="@(userInput == "" || userInput == null || whoIsTyping == "" || whoIsTyping == null || whoIsTyping == userInput)">@whoIsTyping is Typing...</span>
         <div class="input-group mb-3">
             <input type="text" class="form-control" id="usermessage" placeholder="Type Message...." @bind="messageInput" @onfocus="SendWhoIsTyping" @onblur="RemoveWhoIsTyping" />
-             <div class="input-group-append"  @onclick="Send" disabled="@(!IsConnected)" >
-                <button class="btn btn-success" >Send @whoIsTyping</button>
+             <div class="input-group-append">
+                <button class="btn btn-success" @onclick="Send" disabled="@(!IsConnected ||  userInput == null)" >Send</button>
             </div>
         </div>
 	  </div>
@@ -44,7 +44,7 @@
     private List<UserMessage> messages = new();
     private string userInput;
     private string messageInput;
-    private string whoIsTyping = "";
+    private string whoIsTyping;
 
     protected override async Task OnInitializedAsync()
     {
