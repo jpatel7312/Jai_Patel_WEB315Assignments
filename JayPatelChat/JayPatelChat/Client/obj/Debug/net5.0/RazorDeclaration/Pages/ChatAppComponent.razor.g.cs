@@ -13,84 +13,84 @@ namespace JayPatelChat.Client.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Client\_Imports.razor"
+#line 1 "c:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Client\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Client\_Imports.razor"
+#line 2 "c:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Client\_Imports.razor"
 using System.Net.Http.Json;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Client\_Imports.razor"
+#line 3 "c:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Client\_Imports.razor"
+#line 4 "c:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Client\_Imports.razor"
+#line 5 "c:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Client\_Imports.razor"
+#line 6 "c:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Client\_Imports.razor"
+#line 7 "c:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.WebAssembly.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Client\_Imports.razor"
+#line 8 "c:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Client\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Client\_Imports.razor"
+#line 9 "c:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Client\_Imports.razor"
 using JayPatelChat.Client;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Client\_Imports.razor"
+#line 10 "c:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Client\_Imports.razor"
 using JayPatelChat.Client.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Client\Pages\ChatAppComponent.razor"
+#line 2 "c:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Client\Pages\ChatAppComponent.razor"
 using Microsoft.AspNetCore.SignalR.Client;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Client\Pages\ChatAppComponent.razor"
+#line 3 "c:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Client\Pages\ChatAppComponent.razor"
 using JayPatelChat.Shared;
 
 #line default
@@ -105,8 +105,10 @@ using JayPatelChat.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 42 "C:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Client\Pages\ChatAppComponent.razor"
+#line 42 "c:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Client\Pages\ChatAppComponent.razor"
        
+    [Parameter]
+    public string InitName { get; set; }
     private HubConnection hubConnection;
     private List<UserMessage> messages = new();
     private string userInput;
@@ -115,6 +117,7 @@ using JayPatelChat.Shared;
 
     protected override async Task OnInitializedAsync()
     {
+        userInput = InitName;
         hubConnection = new HubConnectionBuilder() 
             .WithUrl(NavigationManager.ToAbsoluteUri("/chathub"))
             .Build();

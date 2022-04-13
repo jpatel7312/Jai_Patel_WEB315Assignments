@@ -6,7 +6,7 @@
 
 <div class="form-group">
     <label for="username">Name:</label>
-    <input type="text" class="form-control" id="username" placeholder="Enter Name" @bind="userInput">
+    <input type="text" class="form-control" id="username" placeholder="Enter Name" @bind="userInput" disabled="@(InitName!=null)">
 </div>
 
 <hr>
@@ -40,6 +40,8 @@
 </div>
 
 @code {
+    [Parameter]
+    public string InitName { get; set; }
     private HubConnection hubConnection;
     private List<UserMessage> messages = new();
     private string userInput;
@@ -48,6 +50,7 @@
 
     protected override async Task OnInitializedAsync()
     {
+        userInput = InitName;
         hubConnection = new HubConnectionBuilder() 
             .WithUrl(NavigationManager.ToAbsoluteUri("/chathub"))
             .Build();

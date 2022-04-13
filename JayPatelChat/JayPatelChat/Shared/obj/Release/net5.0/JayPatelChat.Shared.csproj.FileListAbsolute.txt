@@ -1,0 +1,12 @@
+C:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Shared\bin\Release\net5.0\JayPatelChat.Shared.deps.json
+C:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Shared\bin\Release\net5.0\JayPatelChat.Shared.dll
+C:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Shared\bin\Release\net5.0\JayPatelChat.Shared.pdb
+C:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Shared\obj\Release\net5.0\JayPatelChat.Shared.csproj.AssemblyReference.cache
+C:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Shared\obj\Release\net5.0\JayPatelChat.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Shared\obj\Release\net5.0\JayPatelChat.Shared.AssemblyInfoInputs.cache
+C:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Shared\obj\Release\net5.0\JayPatelChat.Shared.AssemblyInfo.cs
+C:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Shared\obj\Release\net5.0\JayPatelChat.Shared.csproj.CoreCompileInputs.cache
+C:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Shared\obj\Release\net5.0\JayPatelChat.Shared.dll
+C:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Shared\obj\Release\net5.0\refint\JayPatelChat.Shared.dll
+C:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Shared\obj\Release\net5.0\JayPatelChat.Shared.pdb
+C:\Users\axrpt\Documents\Jai_Patel_WEB315Assignments\JayPatelChat\JayPatelChat\Shared\obj\Release\net5.0\ref\JayPatelChat.Shared.dll
